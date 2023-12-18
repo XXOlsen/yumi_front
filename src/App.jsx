@@ -29,31 +29,19 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1>Login demo</h1>
+      <div class="box">
+      
+        <h1>Login</h1>
 
         <form onChange={onChange}>
-          <input placeholder="User Name" id="username" />
+          <input placeholder="Username or user email" id="username" />
           <input placeholder="Password" id="password" />
           <button onClick={performLogin}>Login</button>
+          <a href="#" class="btns">Sign up</a>
         </form>
-
-        <div>
-          {isLoggedIn ? (
-            <div>
-              <p>Du er logget ind, {facade.getUserRoles()}</p>
-              <button onClick={() => facade.logout(setIsLoggedIn)}>
-                Log out
-              </button>
-              {dataFromServer.map((hotel) => (
-                <p key={hotel.id}>{hotel.hotelName}</p>
-              ))}
-            </div>
-          ) : (
-            <p>Log på for at være med i klubben, Mulle</p>
-          )}
         </div>
-      </div>
+    
+  
     </>
   );
 }
