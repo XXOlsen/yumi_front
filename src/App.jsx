@@ -29,6 +29,25 @@ function App() {
 
   return (
     <>
+
+<header>
+
+        <div class="logo">index</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="userpage.html">Page 1</a></li>
+                <li><a href="signup.html">Page 2</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
       <div class="box">
       
         <h1>Login</h1>
