@@ -11,15 +11,13 @@ body {
 }
 
 .box {
-  margin-left: 34em;
-  margin-top: 15em;
+  margin: 5em 21em;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 350%;
-  height: 350px;
+  
   padding: 60px 20px;
 
   box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.5),
