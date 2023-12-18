@@ -11,7 +11,7 @@ body {
 
 
 .box {
-  margin-left: 30em;
+  margin-left: 34em;
   margin-top: 15em;
   width: 470px;
 
@@ -80,7 +80,7 @@ body {
   border: none;
   outline: none;
   background: transparent;
-  font-size:16px;
+  font-size: 16px;
   padding: 10px 15px;
 }
   
