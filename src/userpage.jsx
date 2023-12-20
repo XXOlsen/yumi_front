@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './App.css';
 import './userpage.css';
 import facade from './util/apiFacade';
-import userpage from './util/userpage';
 
 
 function App() {

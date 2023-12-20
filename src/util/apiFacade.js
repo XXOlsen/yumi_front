@@ -6,6 +6,8 @@ const AUTHENTICATION_ROUTE = 'auth/login'
 function apiFacade()
 {
 
+    
+    
     const setToken = (token) =>
     {
         localStorage.setItem('jwtToken', token)
