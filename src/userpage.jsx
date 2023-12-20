@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
+import './userpage.css';
 import facade from './util/apiFacade';
+import userpage from './util/userpage';
+
 
 function App() {
     const init = { username: '', password: '' };
@@ -29,23 +32,64 @@ function App() {
 
 
     return (
-
-        <div class="userFlex">
-            <div class="userHashMap">
-
-            </div>
-            <div class="diaryInfo">
-                <div>
-                    <h3>Diary</h3>
-                    <h3>Info</h3>
-                    <h3>Mood</h3>
+        
+            <div class="userflex">
+                <div class="flex-item1">
+                    <h3>diary (hashmapp)</h3>
                 </div>
-                <div>
-                    <p> write diary underneth  </p>
+
+
+                <div class="user-flex-item flex-item2">
+
+
+
+
+                    <div class="diary">
+
+
+                        <div class="diary-items diary-item1">
+                            <form action="userpage.php" method="post">
+                                <input type="text" name="date" placeholder="Date"/>
+                            </form>
+                        </div>
+
+
+                        <div class="diary-items diary-item2">
+                            <form action="userpage.php" method="post">
+                                <input type="text" name="topic" placeholder="todays topic"/>
+                            </form>
+                        </div>
+
+
+                        <div class="diary-items diary-item3">
+                            <form action="userpage.php" method="post">
+                                <input type="text" name="mood" placeholder="pick your mood"/>
+                            </form>
+                        </div>
+
+
+
+                        <div class="diary-items diary-item4">
+                            <form>
+                                <label for="multilineInput">write your diary here</label>
+                                <textarea class="diary-box" id="multilineInput" name="multilineInput" rows="8"
+                                    cols="25"></textarea>
+                                <input type="submit" value="save page in diary"/>
+                            </form>
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
                 </div>
             </div>
-        </div>
 
-    );
+            );
 
 }
+export default userpage
