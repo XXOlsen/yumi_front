@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Routes} from 'react-router-dom';
 import './App.css';
 import facade from './util/apiFacade';
 import UserPage from './userPage';
@@ -43,9 +43,9 @@ function App() {
         </div>
         <nav className="nav">
           <ul>
-            <li><NavLink to="/" activeclassname="active">Home</NavLink></li>
-            <li><NavLink to="/user" activeclassname="active">User Page</NavLink></li>
-            <li><NavLink to="/admin" activeclassname="active">Admin Page</NavLink></li>
+            <li><NavLink to="/" activeClassName="active">Home</NavLink></li>
+            <li><NavLink to="/user" activeClassName="active">User Page</NavLink></li>
+            <li><NavLink to="/admin" activeClassName="active">Admin Page</NavLink></li>
             <li><a href="signup.html">Page 2</a></li>
           </ul>
         </nav>
@@ -54,19 +54,19 @@ function App() {
       <div className="box">
         <h1>Login</h1>
         <form onChange={onChange}>
-          <input placeholder="Username or user email" id="username" />
-          <input placeholder="Password" id="password" />
+          <input placeholder="Username or user email" id="username" defaultValue={loginCredentials.username} />
+          <input placeholder="Password" id="password" defaultValue={loginCredentials.password} />
           <button onClick={performLogin}>Login</button>
           <a href="#" className="btns">Sign up</a>
         </form>
       </div>
 
 
-      <routes>
+      <Routes>
       <Route path="/user" component={UserPage} />
       <Route path="/admin" render={() => <AdminPage isAdmin={isAdmin} />} />
       {/* Add other Routes as necessary */}
-      </routes>
+      </Routes>
     </Router>
   );
 }
