@@ -8,10 +8,13 @@ body {
   margin: 0;
   font-family: "Arial", sans-serif;
   height: 100vh;
+  /*cursor: url('./cursor/beeshe.png') 16 16, auto;
+  */
 }
 
 .box {
   margin: 5em 21em;
+
   position: relative;
   display: flex;
   flex-direction: column;
@@ -40,7 +43,7 @@ body {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background: #fff;
+
   opacity: 0.9;
 }
 
@@ -152,7 +155,6 @@ body {
 header {
   background-color: #333;
   color: #fff;
-  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;

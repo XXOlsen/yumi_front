@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react";
-import "./App.css";
-import "./signup.css";
-import facade from "./util/apiFacade";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, NavLink, Routes} from 'react-router-dom';
+import './App.css';
+import facade from './util/apiFacade';
+import UserPage from './userPage';
+import AdminPage from './adminpage'; // assuming you have an AdminPage component
 
 function App() {
   const init = { username: "", password: "" };
   const [loginCredentials, setLoginCredentials] = useState(init);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [dataFromServer, setDataFromServer] = useState("Loading...");
+  const [dataFromServer, setDataFromServer] = useState('Loading...');
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     facade.fetchData("diary", "GET").then((data) => setDataFromServer(data));
@@ -21,6 +24,7 @@ function App() {
       setIsLoggedIn
     );
   };
+
   const onChange = (evt) => {
     setLoginCredentials({
       ...loginCredentials,
@@ -30,44 +34,41 @@ function App() {
 
 
   return (
-    <>
-        <header>
-        <div class="logo">index</div>
-        <div class="menu-toggle" id="mobile-menu">
+    <Router>
+      <header>
+        <div className="logo">index</div>
+        <div className="menu-toggle" id="mobile-menu">
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <nav class="nav">
+        <nav className="nav">
           <ul>
-            <li>
-              <a href="index.html" class="active">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="userpage.jsx">Userpage</a>
-            </li>
-            <li>
-              <a href="signup.jsx">Signup</a>
-            </li>
+            <li><NavLink to="/" activeClassName="active">Home</NavLink></li>
+            <li><NavLink to="/user" activeClassName="active">User Page</NavLink></li>
+            <li><NavLink to="/admin" activeClassName="active">Admin Page</NavLink></li>
+            <li><a href="signup.html">Page 2</a></li>
           </ul>
         </nav>
       </header>
 
-      <div class="box">
+      <div className="box">
         <h1>Login</h1>
-
         <form onChange={onChange}>
-          <input placeholder="Username or user email" id="username" />
-          <input placeholder="Password" id="password" />
+          <input placeholder="Username or user email" id="username" defaultValue={loginCredentials.username} />
+          <input placeholder="Password" id="password" defaultValue={loginCredentials.password} />
           <button onClick={performLogin}>Login</button>
-          <a href="signup.jsx" class="btns">
-            Sign up
-          </a>
+          <a href="#" className="btns">Sign up</a>
         </form>
       </div>
-    </>
+
+
+      <Routes>
+      <Route path="/user" component={UserPage} />
+      <Route path="/admin" render={() => <AdminPage isAdmin={isAdmin} />} />
+      {/* Add other Routes as necessary */}
+      </Routes>
+    </Router>
   );
   
 }
