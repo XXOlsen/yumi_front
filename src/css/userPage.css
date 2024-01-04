@@ -1,18 +1,19 @@
 .userflex {
     display: grid;
-    grid-template-columns: 30% 60%;
+    grid-template-columns: 30% 67%;
     gap: 3%;
     height: 80vh;
+    margin: 3%;
 }
 
 .flex-item1 {
-    background-color: #902298;
+    background-color: gray;
     color: #fff;
     padding: 10px;
 }
 
 .flex-item2 {
-    background-color: #902298;
+    background-color: gray;
     color: #fff;
     padding: 10px;
 }
@@ -20,8 +21,10 @@
 .diary {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
+    grid-template-rows: auto auto; /* Define the rows for the first two items */
+    gap: 10px; /* Adjust the gap between items if needed */
+  }
+
 
 .diary-items {
     padding: 10px;
@@ -29,8 +32,8 @@
 }
 
 .diary-item4 {
-    grid-column: span 2; /* Span across two columns */
-    margin-top: 10px;
+    grid-column: span 2; 
+    margin-top: 100px;
 }
 
 .diary-box {
@@ -41,7 +44,7 @@
 }
 
 input[type="submit"] {
-    margin-top: 10px;
+    margin-top: 50px;
     padding: 8px;
     cursor: pointer;
 }
