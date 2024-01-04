@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
-import './App.css';
-import './userpage.css';
+
+import React, { useState, useEffect } from 'react';
+import './css/App.css';
+import './css/userpage.css';
 import facade from './util/apiFacade';
 
 
-function App() {
+function UserPage() {
     const init = { username: '', password: '' };
     const [loginCredentials, setLoginCredentials] = useState(init);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -91,4 +92,4 @@ function App() {
             );
 
 }
-export default userpage
+export default UserPage
