@@ -55,9 +55,9 @@ function Signup({ setUser }) {
         <h1>Signup</h1>
 
         <form onChange={onChange}>
-        <input placeholder="Username" id="username" />
+        <input placeholder="Username"/>
         <input placeholder="User email" id="useremail" />
-        <input placeholder="Password" id="password" />
+        <input placeholder="Password"/>
         <input placeholder="Confirm password" id="confirmpassword" />
         <input placeholder="Diary name" id="diaryname" />
         {/*
