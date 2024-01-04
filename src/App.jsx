@@ -1,10 +1,10 @@
 
 import { useState, useEffect } from 'react';
-import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Routes} from 'react-router-dom';
 import './css/App.css';
 import facade from './util/apiFacade';
 import UserPage from './userPage';
+import Signup from './signup';
 import AdminPage from './adminpage'; // assuming you have an AdminPage component
 
 function App() {
@@ -60,7 +60,7 @@ function App() {
           <input placeholder="Username or user email" id="username" defaultValue={loginCredentials.username} />
           <input placeholder="Password" id="password" defaultValue={loginCredentials.password} />
           <button onClick={performLogin}>Login</button>
-          <a href="#" className="btns">Sign up</a>
+          <a href="#" className="btns">login</a>
         </form>
 
         </div>
@@ -70,8 +70,7 @@ function App() {
 
 
       <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/signup" element={<Signup setUser={setUser} />} />
+      <Route path="/signup" element={<Signup/>} />
     <Route path="/user" element={<UserPage />} />
     <Route path="/admin" element={<AdminPage isAdmin={isAdmin} />} />
       {/* Add other Routes as necessary */}
