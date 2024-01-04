@@ -1,6 +1,8 @@
+
+import { useState, useEffect } from 'react';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, NavLink, Routes} from 'react-router-dom';
-import './App.css';
+import './css/App.css';
 import facade from './util/apiFacade';
 import UserPage from './userPage';
 import AdminPage from './adminpage'; // assuming you have an AdminPage component
@@ -60,15 +62,23 @@ function App() {
           <button onClick={performLogin}>Login</button>
           <a href="#" className="btns">Sign up</a>
         </form>
-      </div>
+
+        </div>
+    
+
+   
 
 
       <Routes>
-      <Route path="/user" component={UserPage} />
-      <Route path="/admin" render={() => <AdminPage isAdmin={isAdmin} />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/signup" element={<Signup setUser={setUser} />} />
+    <Route path="/user" element={<UserPage />} />
+    <Route path="/admin" element={<AdminPage isAdmin={isAdmin} />} />
       {/* Add other Routes as necessary */}
       </Routes>
-    </Router>
+
+      </Router>  
+    
   );
   
 }

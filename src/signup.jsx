@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useRef } from "react";
 import "./index.css";
-import "./signup.css";
+import "./css/signup.css";
 
 function Signup({ setUser }) {
   const [hasUser, setHasUser] = useState(false);
@@ -56,3 +56,5 @@ function Signup({ setUser }) {
       </>
     );
     }
+
+    export default Signup;
