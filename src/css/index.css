@@ -44,23 +44,10 @@ body {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-
   opacity: 0.9;
 }
 
-.box:after {
-  content: "";
-  position: absolute;
-  top: 90px;
-  left: 110px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #fff;
-  opacity: 0.9;
-}
-
-.box div {
+.box input {
   position: relative;
   width: 225px;
   border-radius: 25px;
@@ -129,24 +116,6 @@ body {
     15px 20px 20px rgba(190, 1, 254, 1) 
     inset -10px -10px 15px rgba(255, 255, 255, 0.5);
   transition: 0.25s;
-}
-
-.btns::before {
-  content: "";
-  position: absolute;
-  top: 15px;
-  left: 30px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #fff;
-  opacity: 0.45;
-}
-
-.btns::before {
-  left: 20px;
-  width: 15px;
-  height: 15px;
 }
 
 .btns:hover {

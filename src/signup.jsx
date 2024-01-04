@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useRef } from "react";
+import './css/App.css';
 import "./css/index.css";
 import "./css/signup.css";
 
