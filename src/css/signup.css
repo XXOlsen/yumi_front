@@ -49,6 +49,10 @@ body {
     border: none;
   }
   
+  #username, #password{
+    width: 100%;
+  }
+  
   
 
 
