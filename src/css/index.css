@@ -44,12 +44,15 @@ body {
 }
 
 .box input {
-  width: 100%;
   border: none;
   outline: none;
   background: transparent;
   font-size: 16px;
   padding: 10px 15px;
+}
+
+.width100 {
+  width: 100%;
 }
 
 .box input[type="submit"] {
