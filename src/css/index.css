@@ -13,7 +13,8 @@ body {
 }
 
 .box {
-  margin: 5em 21em;
+  width: 20em;
+  margin: 20% 40%;
 
   position: relative;
   display: flex;
@@ -189,7 +190,20 @@ header {
   color: yellow;
 }
 
+
+@media screen and (min-width: 769px) {
+  .box {
+    width: 40%;
+    margin: 20% 32%;
+  }
+ }
+ 
+
 @media only screen and (max-width: 768px) {
+  .box {
+    margin: 20% 32%;
+  }
+
   .menu-toggle {
     display: block;
   }
@@ -208,3 +222,11 @@ header {
     display: flex;
   }
 }
+
+@media only screen and (max-width: 425px) {
+  .box {
+    margin: 20% 0%;
+  }
+}
+
+
