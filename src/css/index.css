@@ -56,19 +56,7 @@ body {
   opacity: 0.9;
 }
 
-.box:after {
-  content: "";
-  position: absolute;
-  top: 90px;
-  left: 110px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #fff;
-  opacity: 0.9;
-}
-
-.box div {
+.box input {
   position: relative;
   width: 225px;
   border-radius: 25px;
