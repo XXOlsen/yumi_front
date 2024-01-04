@@ -30,10 +30,18 @@ body {
 
   transition: 0.5s;
   border-radius: 52% 48% 33% 67% / 38% 45% 55% 62%;
+
+  transition: 0.5s;
+
 }
 
 .box:hover {
-  border-radius: 50%;
+
+  background-color: #61dafb;
+  transform: scale(1.1);
+  box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.2),
+    25px 35px 20px rgba(0, 0, 0, 0.2),
+    inset -20px -20px 25px rgba(255, 255, 255, 0.9);
 }
 
 .box:before {
@@ -44,10 +52,23 @@ body {
   width: 35px;
   height: 35px;
   border-radius: 50%;
+
   opacity: 0.9;
 }
 
-.box input {
+.box:after {
+  content: "";
+  position: absolute;
+  top: 90px;
+  left: 110px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.9;
+}
+
+.box div {
   position: relative;
   width: 225px;
   border-radius: 25px;
@@ -117,6 +138,8 @@ body {
     inset -10px -10px 15px rgba(255, 255, 255, 0.5);
   transition: 0.25s;
 }
+
+
 
 .btns:hover {
   border-radius: 50%;
