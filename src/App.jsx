@@ -29,7 +29,7 @@ function App() {
             <li><NavLink to="/loginpage" activeClassName="active">Login Page</NavLink></li>
             <li><NavLink to="/user" activeClassName="active">User Page</NavLink></li>
             <li><NavLink to="/admin" activeClassName="active">Admin Page</NavLink></li>
-            <li><NavLink to="signup">signup</NavLink></li>
+            <li><NavLink to="signup" activeClassName="active">signup</NavLink></li>
           </ul>
         </nav>
       </header>
