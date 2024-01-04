@@ -1,5 +1,8 @@
+
 import { useState, useEffect } from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, NavLink, Routes} from 'react-router-dom';
+import './css/App.css';
 import facade from './util/apiFacade';
 
 
@@ -60,8 +63,21 @@ function App() {
           <button onClick={performLogin}>Login</button>
           <a href="#" class="btns">Sign up</a>
         </form>
+
         </div>
     
+
+   
+
+
+      <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/signup" element={<Signup setUser={setUser} />} />
+    <Route path="/user" element={<UserPage />} />
+    <Route path="/admin" element={<AdminPage isAdmin={isAdmin} />} />
+      {/* Add other Routes as necessary */}
+      </Routes>
+
   
     </>
   );
