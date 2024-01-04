@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import facade from './util/apiFacade';
 import "./css/index.css";
 import "./css/signup.css";
+import './css/App.css';
 
 function Login() {
 

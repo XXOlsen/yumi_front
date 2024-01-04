@@ -38,6 +38,16 @@ function Signup({ setUser }) {
       console.log(error);
     }
   }
+  
+  
+  const onChange = (evt) => {
+    setLoginCredentials({
+      ...loginCredentials,
+      [evt.target.id]: evt.target.value,
+    });
+  };
+
+
 
   return (
     <>
@@ -50,7 +60,10 @@ function Signup({ setUser }) {
         <input placeholder="Password" id="password" />
         <input placeholder="Confirm password" id="confirmpassword" />
         <input placeholder="Diary name" id="diaryname" />
-        <button onClick={performSignup}>Sign up</button>
+        {/*
+        <button onClick={performSignup}>Sign up</button> 
+        */}
+        
         </form>
       </div>
 

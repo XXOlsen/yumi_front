@@ -6,7 +6,7 @@ import facade from './util/apiFacade';
 import Login from './loginpage';
 import Signup from './signup';
 import UserPage from './userPage';
-import AdminPage from './adminpage'; // assuming you have an AdminPage component
+import AdminPage from './adminpage'; 
 
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
             <li><NavLink to="/loginpage" activeClassName="active">Login Page</NavLink></li>
             <li><NavLink to="/user" activeClassName="active">User Page</NavLink></li>
             <li><NavLink to="/admin" activeClassName="active">Admin Page</NavLink></li>
-            <li><a href="signup.html">signup</a></li>
+            <li><NavLink to="signup" activeClassName="active">signup</NavLink></li>
           </ul>
         </nav>
       </header>
