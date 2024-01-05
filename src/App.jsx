@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <header>
-        <div className="logo">index</div>
+      <img className="logo" src="/assets/logo2.png" alt="yumiLogo" onError={(e) => console.log("Error loading image:", e)}/>
         <div className="menu-toggle" id="mobile-menu">
           <span></span>
           <span></span>
