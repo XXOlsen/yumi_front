@@ -49,7 +49,7 @@ body {
     border: none;
   }
   
-  #username, #password{
+  #logusername, #logpassword{
     width: 100%;
   }
   
