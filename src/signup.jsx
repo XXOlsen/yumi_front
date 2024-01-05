@@ -1,74 +1,71 @@
-import React from "react";
-import { useState, useRef } from "react";
-import { BrowserRouter as Router, Route, NavLink, Routes} from 'react-router-dom';
+import React, { useState, useRef } from "react";
+import { NavLink } from "react-router-dom";
+import facade from './util/apiFacade';
 import './css/App.css';
 import "./css/index.css";
 import "./css/signup.css";
 
 function Signup({ setUser }) {
-  const [hasUser, setHasUser] = useState(false);
+  const init = { username: "", password: "", confirmPassword: "", useremail: "", diaryName: "" };
+  const [signupData, setSignupData] = useState(init);
   const [error, setError] = useState(null);
+
   const name = useRef(null);
   const password = useRef(null);
+  const confirmPassword = useRef(null);
+  const useremail = useRef(null);
+  const diaryName = useRef(null);
 
-  async function createUser() {
-    const user = {
-      name: name.current.value,
-      password: password.current.value,
-    };
+  const performSignup = async (evt) => {
+    evt.preventDefault();
+
+    // Validate passwords match
+    if (signupData.password !== signupData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
 
     try {
-      let res = await fetch("http://localhost:7070/api/v1/diary/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
-      console.log(res);
-      if (res.ok) {
-        let data = await res.json();
-        console.log(data);
-        setHasUser(true);
-        setError(null);
-      } else {
-        setError("User already exists");
-      }
+      // Call the signup function from facade
+      await facade.signup(signupData.username, signupData.password);
+
+      // Assuming signup is successful, you may want to do something with the user data
+      setUser(/* pass relevant user data */);
+
+      // Redirect or do any other actions upon successful signup
     } catch (error) {
-      setError(error);
-      console.log(error);
+      // Handle signup error
+      setError("Error during signup. Please try again.");
+      console.error(error);
     }
-  }
-  
-  
+  };
+
   const onChange = (evt) => {
-    setLoginCredentials({
-      ...loginCredentials,
+    setSignupData({
+      ...signupData,
       [evt.target.id]: evt.target.value,
     });
   };
 
-
-
   return (
     <>
-    <div class="box">
+      <div className="box">
         <h1>Signup</h1>
 
         <form onChange={onChange}>
-        <input placeholder="Username"/>
-        <input placeholder="User email" id="useremail" />
-        <input placeholder="Password"/>
-        <input placeholder="Confirm password" id="confirmpassword" />
-        <input placeholder="Diary name" id="diaryname" />
-        <button>Sign up</button> 
-        <button><NavLink to="/loginpage" activeClassName="active">Login</NavLink></button>
-      
+          <input placeholder="Username" id="username" ref={name} />
+          <input placeholder="User email" id="useremail" ref={useremail} />
+          <input placeholder="Password" type="password" id="password" ref={password} />
+          <input placeholder="Confirm password" type="password" id="confirmPassword" ref={confirmPassword} />
+          <input placeholder="Diary name" id="diaryName" ref={diaryName} />
+          <button onClick={performSignup}>Sign up</button>
+          <button><NavLink to="/loginpage" activeClassName="active">Login</NavLink></button>
         </form>
+
+        {error && <p className="error-message">{error}</p>}
       </div>
+    </>
+  );
+}
 
-      </>
-    );
-    }
-
-    export default Signup;
+export default Signup;
