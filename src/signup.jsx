@@ -8,7 +8,7 @@ import "./css/signup.css";
 function Signup({ setUser }) {
   const init = { username: "", password: "", confirmPassword: "", useremail: "", diaryName: "" };
   const [signupData, setSignupData] = useState(init);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   const name = useRef(null);
   const password = useRef(null);
@@ -59,7 +59,7 @@ function Signup({ setUser }) {
           <input placeholder="Confirm password" type="password" id="confirmPassword" ref={confirmPassword} />
           <input placeholder="Diary name" id="diaryName" ref={diaryName} />
           <button onClick={performSignup}>Sign up</button>
-          <button><NavLink to="/loginpage" activeClassName="active">Login</NavLink></button>
+          <NavLink to="/loginpage" activeClassName="active"><button className="btns">Login</button></NavLink>
         </form>
 
         {error && <p className="error-message">{error}</p>}

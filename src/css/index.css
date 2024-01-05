@@ -155,6 +155,15 @@ header {
   color: yellow;
 }
 
+#logusername, #logpassword {
+  width: 35%;
+  margin-bottom: 2em;
+}
+
+#logusername {
+  margin-right: 2em;
+}
+
 
 @media screen and (min-width: 769px) {
   .box {

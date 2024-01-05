@@ -41,10 +41,10 @@ function Login() {
       <div className="box">
         <h1>Login</h1>
         <form onChange={onChange}>
-          <input  placeholder="Username or email" id="logusername" defaultValue={loginCredentials.username} />
+          <input  placeholder="Username" id="logusername" defaultValue={loginCredentials.username} />
           <input  placeholder="Password" id="logpassword" defaultValue={loginCredentials.password} />
           <button onClick={performLogin}>Login</button>
-          <li><NavLink to="/signup" activeClassName="active">Signup</NavLink></li>
+          <NavLink to="/signup" activeClassName="active"><button className="btns">Signup</button></NavLink>
         </form>
 
         </div>
