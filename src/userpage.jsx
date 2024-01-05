@@ -39,19 +39,19 @@ function UserPage() {
                 <div className="diary">
                     <div className="diary-items diary-item1">
                         <form action="userpage.php" method="post">
-                            <input type="text" name="date" placeholder="Date" />
+                            <input type="text" name="date" placeholder="Date" className="UP1UP3" />
                         </form>
                     </div>
 
                     <div className="diary-items diary-item2">
                         <form action="userpage.php" method="post">
-                            <input type="text" name="topic" placeholder="todays topic" />
+                            <input type="text" name="mood" placeholder="pick your mood" className="UP2" />
                         </form>
                     </div>
 
                     <div className="diary-items diary-item3">
                         <form action="userpage.php" method="post">
-                            <input type="text" name="mood" placeholder="pick your mood" />
+                            <input type="text" name="topic" placeholder="todays topic" className="UP1UP3" />
                         </form>
                     </div>
 
@@ -62,8 +62,8 @@ function UserPage() {
                                 className="diary-box"
                                 id="multilineInput"
                                 name="multilineInput"
-                                rows="8"
-                                cols="25"
+                                rows="40"
+                                cols="50"
                             ></textarea>
                             <input type="submit" value="save page in diary" />
                         </form>
