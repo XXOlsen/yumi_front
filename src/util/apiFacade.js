@@ -61,6 +61,31 @@ function apiFacade()
             })
     }
 
+    const signup = async (username, password, callback) => {
+        const payload = { username: username, password: password }
+    
+        const options = makeOptions("POST", payload)
+    
+        try {
+            const res = await fetch(URL + AUTHENTICATION_ROUTE, options)
+            const json = await handleHttpErrors(res)
+            setToken(json.token)
+            callback(true)
+        } catch (error) {
+            if (error.status) {
+                try {
+                    const fullError = await error.fullError;
+                    console.log(JSON.stringify(fullError));
+                } catch (nestedError) {
+                    console.log("Error occurred:", nestedError);
+                }
+            } else {
+                console.log("Serious error:", error);
+            }
+        }
+    }
+    
+
     const fetchData = (endpoint, method, payload) =>
     {
         const options = makeOptions(method, payload, true); //True add's the token
@@ -115,6 +140,7 @@ function apiFacade()
         getToken,
         logout,
         login,
+        signup,
         getUserRoles,
         hasUserAccess,
         fetchData
