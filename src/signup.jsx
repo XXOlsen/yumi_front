@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useRef } from "react";
+import { BrowserRouter as Router, Route, NavLink, Routes} from 'react-router-dom';
 import './css/App.css';
 import "./css/index.css";
 import "./css/signup.css";
@@ -60,10 +61,9 @@ function Signup({ setUser }) {
         <input placeholder="Password"/>
         <input placeholder="Confirm password" id="confirmpassword" />
         <input placeholder="Diary name" id="diaryname" />
-        {/*
-        <button onClick={performSignup}>Sign up</button> 
-        */}
-        
+        <button>Sign up</button> 
+        <button><NavLink to="/loginpage" activeClassName="active">Login</NavLink></button>
+      
         </form>
       </div>
 

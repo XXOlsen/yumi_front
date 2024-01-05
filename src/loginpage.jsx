@@ -41,7 +41,7 @@ function Login() {
       <div className="box">
         <h1>Login</h1>
         <form onChange={onChange}>
-          <input  placeholder="Username or user email" id="username" defaultValue={loginCredentials.username} />
+          <input  placeholder="Username" id="username" defaultValue={loginCredentials.username} />
           <input  placeholder="Password" id="password" defaultValue={loginCredentials.password} />
           <button onClick={performLogin}>Login</button>
           <li><NavLink to="/signup" activeClassName="active">Signup</NavLink></li>
