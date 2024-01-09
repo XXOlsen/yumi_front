@@ -1,11 +1,13 @@
 import React, { useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import facade from './util/apiFacade';
+import { useHistory } from 'react-router-dom';
 import './css/App.css';
 import "./css/index.css";
 import "./css/signup.css";
 
 function Signup({ setUser }) {
+  const history = useHistory();
   const init = { username: "", password: "", confirmPassword: "", useremail: "", diaryName: "" };
   const [signupData, setSignupData] = useState(init);
   const [error, setError] = useState(false);
@@ -18,28 +20,31 @@ function Signup({ setUser }) {
 
   const performSignup = async (evt) => {
     evt.preventDefault();
-
+  
     // Validate passwords match
     if (signupData.password !== signupData.confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-
+  
     try {
       // Call the signup function from facade
       await facade.signup(signupData.username, signupData.password);
-
+  
       // Assuming signup is successful, you may want to do something with the user data
-      setUser(/* pass relevant user data */);
+      // For example, setting user data in the state
+      setUser(signupData.username); 
+  
+      // Redirect upon successful signup
+      history.push('/loginpage');
 
-      // Redirect or do any other actions upon successful signup
     } catch (error) {
       // Handle signup error
       setError("Error during signup. Please try again.");
       console.error(error);
     }
   };
-
+  
   const onChange = (evt) => {
     setSignupData({
       ...signupData,

@@ -1,7 +1,8 @@
 
 const URL = 'http://localhost:7070/api/v1/'
-const HOTEL_ROUTE = "hotels"
+const DIART_ROUTE = "diary"
 const AUTHENTICATION_ROUTE = 'auth/login'
+const SINGUP_ROUTE = 'auth/register'
 
 function apiFacade()
 {
@@ -61,30 +62,23 @@ function apiFacade()
             })
     }
 
-    const signup = async (username, password, callback) => {
-        const payload = { username: username, password: password }
-    
-        const options = makeOptions("POST", payload)
-    
+    const signup = async (username, password) => {
+        const payload = { username, password };
+      
+        const options = makeOptions('POST', payload);
+      
         try {
-            const res = await fetch(URL + AUTHENTICATION_ROUTE, options)
-            const json = await handleHttpErrors(res)
-            setToken(json.token)
-            callback(true)
+          const res = await fetch(URL + SINGUP_ROUTE, options); // Use the correct route for signup
+          if (!res.ok) {
+            throw new Error('Failed to sign up'); // Handle failed signup request
+          }
+          const json = await handleHttpErrors(res);
+          setToken(json.token); // Set the token if required by your backend
+          return true; // Indicating successful signup
         } catch (error) {
-            if (error.status) {
-                try {
-                    const fullError = await error.fullError;
-                    console.log(JSON.stringify(fullError));
-                } catch (nestedError) {
-                    console.log("Error occurred:", nestedError);
-                }
-            } else {
-                console.log("Serious error:", error);
-            }
+          throw error; // Propagate error for handling in the component
         }
-    }
-    
+      };
 
     const fetchData = (endpoint, method, payload) =>
     {

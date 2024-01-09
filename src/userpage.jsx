@@ -10,7 +10,7 @@ function UserPage() {
     const [dataFromServer, setDataFromServer] = useState('Loading...');
 
     useEffect(() => {
-        facade.fetchData('hotels', 'GET').then((data) => setDataFromServer(data));
+        facade.fetchData('diary', 'GET').then((data) => setDataFromServer(data));
     }, [isLoggedIn]);
 
     const performLogin = (evt) => {
