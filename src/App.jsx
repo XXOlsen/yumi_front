@@ -17,7 +17,8 @@ function App() {
   return (
     <Router>
       <header>
-        <div className="logo">index</div>
+      
+      <img src="./assets/ylogo.png" className="logo"  alt="yumiLogo" width="300" height="300" />
         <div className="menu-toggle" id="mobile-menu">
           <span></span>
           <span></span>
