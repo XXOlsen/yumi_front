@@ -29,7 +29,7 @@ function App() {
             <li><NavLink to="/loginpage" activeClassName="active">Login</NavLink></li>
             <li><NavLink to="/user" activeClassName="active">User Page</NavLink></li>
             <li><NavLink to="/admin" activeClassName="active">Admin Page</NavLink></li>
-            <li><NavLink to="signup" activeClassName="active">Signup</NavLink></li>
+            <li><NavLink to="/signup" activeClassName="active">Signup</NavLink></li>
           </ul>
         </nav>
       </header>
@@ -39,7 +39,7 @@ function App() {
 
 
       <Routes>
-        <Route path="loginpage" element={<Login/>} />
+        <Route path="/loginpage" element={<Login/>} />
       <Route path="/signup" element={<Signup/>} />
     <Route path="/user" element={<UserPage/>} />
     <Route path="/admin" element={<AdminPage isAdmin={isAdmin} />} />
