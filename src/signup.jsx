@@ -1,13 +1,11 @@
 import React, { useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import facade from './util/apiFacade';
-import { useHistory } from 'react-router-dom';
 import './css/App.css';
 import "./css/index.css";
 import "./css/signup.css";
 
 function Signup({ setUser }) {
-  const history = useHistory();
   const init = { username: "", password: "", confirmPassword: "", useremail: "", diaryName: "" };
   const [signupData, setSignupData] = useState(init);
   const [error, setError] = useState(false);
@@ -35,8 +33,6 @@ function Signup({ setUser }) {
       // For example, setting user data in the state
       setUser(signupData.username); 
   
-      // Redirect upon successful signup
-      history.push('/loginpage');
 
     } catch (error) {
       // Handle signup error
