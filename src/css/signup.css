@@ -22,8 +22,6 @@ body {
   .box input {
     outline: none;
     font-size: 16px;
-    padding: 10px 15px;
-    margin-bottom: 15px;
   }
   
   .box input[type="submit"] {
@@ -49,10 +47,12 @@ body {
     border: none;
   }
   
-  #username, #password{
-    width: 100%;
+  #username, #useremail, #password, #confirmpassword, #diaryname {
+    width: 35%;
+    margin-bottom: 2em;
+    margin-left: 2em; 
   }
-  
+
   
 
 

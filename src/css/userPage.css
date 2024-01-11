@@ -31,9 +31,18 @@
     box-sizing: border-box;
 }
 
+
+
+.UP1UP3{
+    height: 50px;
+  }
+
+.UP2{
+    height: 100px;
+}
+
 .diary-item4 {
     grid-column: span 2; 
-    margin-top: 100px;
 }
 
 .diary-box {

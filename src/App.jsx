@@ -17,7 +17,8 @@ function App() {
   return (
     <Router>
       <header>
-        <div className="logo">index</div>
+      
+      <img src="./assets/ylogo.png" className="logo"  alt="yumiLogo" width="300" height="300" />
         <div className="menu-toggle" id="mobile-menu">
           <span></span>
           <span></span>
@@ -26,10 +27,10 @@ function App() {
         <nav className="nav">
           <ul>
             <li><NavLink to="/" activeClassName="active">Home</NavLink></li>
-            <li><NavLink to="/loginpage" activeClassName="active">Login Page</NavLink></li>
+            <li><NavLink to="/loginpage" activeClassName="active">Login</NavLink></li>
             <li><NavLink to="/user" activeClassName="active">User Page</NavLink></li>
             <li><NavLink to="/admin" activeClassName="active">Admin Page</NavLink></li>
-            <li><NavLink to="signup" activeClassName="active">signup</NavLink></li>
+            <li><NavLink to="signup" activeClassName="active">Signup</NavLink></li>
           </ul>
         </nav>
       </header>
