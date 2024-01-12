@@ -1,26 +1,32 @@
+import React, { useState } from 'react';
 import './css/admin.css';
 
 function AdminPage() {
-    return (
-     
-       <div>
-        <h1>Admin Page</h1>
-        <p>Only for admins</p>
-<div class ="flex">
-        <div class="flexexamplep">
-         <label htmlFor="username">Username:</label>
-    <input type="text"  name="username" placeholder="Enter your username" />
+  const [isAdmin, setIsAdmin] = useState(true); // Set the initial admin status
 
-    <label htmlFor="password">Password:</label>
-    <input type="password"  name="password" placeholder="Enter your password" />
+  return (
+    <div>
+      <h1>Admin Page</h1>
+      {isAdmin ? (
+        <>
+          <p>Only for admins</p>
+          <div className="flex">
+            <div className="flexexamplep">
+              <label htmlFor="username">Username:</label>
+              <input type="text" name="username" placeholder="Enter your username" />
 
-    <button type="submit">Login</button>
+              <label htmlFor="password">Password:</label>
+              <input type="password" name="password" placeholder="Enter your password" />
+
+              <button type="submit">Login</button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <p>You do not have admin privileges to access this page.</p>
+      )}
     </div>
-        </div> 
-        </div>
- 
-        
-    );
-    }
+  );
+}
 
 export default AdminPage;

@@ -82,7 +82,7 @@ function apiFacade()
         }
       };
       
-    const fetchData = (endpoint, method, payload) =>
+     const fetchData = (endpoint, method, payload) =>
     {
         const options = makeOptions(method, payload, true); //True add's the token
         return fetch(URL + endpoint, options).then(handleHttpErrors);
