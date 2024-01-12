@@ -35,51 +35,53 @@ function apiFacade()
         return res.json()
     }
 
-    const login = (user, password, callback) =>
-    {
-        console.log("Jeg er fanget inde i login funktionen", user, password)
-
-        const payload = { username: user, password: password }
-
-        const options = makeOptions("POST", payload)
-
-        return fetch(URL + AUTHENTICATION_ROUTE, options)
-            .then(handleHttpErrors)
-            .then((json) =>
-            {
-                callback(true)
-                setToken(json.token)
-            })
-            .catch((error) =>
-            {
-                if (error.status)
-                {
-                    error.fullError.then(e => console.log(JSON.stringify(e)))
-                } else
-                {
-                    console.log("seriøs fejl", error)
-                }
-            })
-    }
-
-    const signup = async (username, password) => {
+    const login = async (username, password) => {
         const payload = { username, password };
+        const options = makeOptions("POST", payload);
       
+        try {
+          const res = await fetch(URL + AUTHENTICATION_ROUTE, options);
+          if (!res.ok) {
+            throw new Error('Invalid username or password');
+          }
+          const json = await handleHttpErrors(res);
+          const token = json.token;
+      
+          if (token) {
+            setToken(token);
+            return token;
+          } else {
+            throw new Error('Token not received');
+          }
+        } catch (error) {
+          throw error;
+        }
+      };
+      
+
+      const signup = async (username, password) => {
+        const payload = { username, password };
         const options = makeOptions('POST', payload);
       
         try {
-          const res = await fetch(URL + SINGUP_ROUTE, options); // Use the correct route for signup
+          const res = await fetch(URL + SINGUP_ROUTE, options);
           if (!res.ok) {
-            throw new Error('Failed to sign up'); // Handle failed signup request
+            throw new Error('Failed to sign up');
           }
           const json = await handleHttpErrors(res);
-          setToken(json.token); // Set the token if required by your backend
-          return true; // Indicating successful signup
+          const token = json.token;
+      
+          if (token) {
+            setToken(token);
+            return true; // Indicating successful signup
+          } else {
+            throw new Error('Token not received');
+          }
         } catch (error) {
-          throw error; // Propagate error for handling in the component
+          throw error;
         }
       };
-
+      
     const fetchData = (endpoint, method, payload) =>
     {
         const options = makeOptions(method, payload, true); //True add's the token
