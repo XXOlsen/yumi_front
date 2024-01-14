@@ -16,11 +16,11 @@ function App() {
         </ul>
       </nav>
 
-      <Switch>
+      <routes>
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/" component={Home} />
-      </Switch>
+      </routes>//can be replaced with <Switch>...</Switch>
     </Router>
   );
 }
