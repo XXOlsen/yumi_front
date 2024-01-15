@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class MyComponent extends React.Component {
-  handleClick = () => {
-    console.log('Button clicked in React!');
+const EventHandlingExample = () => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => setInputValue(event.target.value);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`Submitted: ${inputValue}`);
   };
 
-  render() {
-    return (
-      <button onClick={this.handleClick}>Click me in React!</button>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>Event Handling Example</h1>
 
-export default MyComponent;
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+        placeholder="Type something..."
+      />
+
+      <form onSubmit={handleSubmit}>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default EventHandlingExample;
