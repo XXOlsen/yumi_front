@@ -59,6 +59,32 @@ function apiFacade()
       };
       
 
+    /*
+      const login = async (username, password, callback) => {
+        const payload = { username, password };
+        const options = makeOptions("POST", payload);
+      
+        try {
+          const res = await fetch(URL + AUTHENTICATION_ROUTE, options);
+      
+          if (!res.ok) {
+            throw new Error('Invalid username or password');
+          }
+      
+          const json = await handleHttpErrors(res);
+          const token = json.token;
+      
+          if (token) {
+            setToken(token);
+            callback(null, token); // Invoke the callback with the token
+          } else {
+            throw new Error('Token not received');
+          }
+        } catch (error) {
+          callback(error, null); // Invoke the callback with the error
+        }
+      };
+*/
       const signup = async (username, password) => {
         const payload = { username, password };
         const options = makeOptions('POST', payload);
