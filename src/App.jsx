@@ -1,23 +1,19 @@
-
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Routes} from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, NavLink, Routes } from 'react-router-dom';
 import './css/App.css';
 import facade from './util/apiFacade';
 import Login from './loginpage';
 import Signup from './signup';
 import UserPage from './userPage';
-import AdminPage from './adminpage'; 
-
+import AdminPage from './adminpage';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 
-
-
   return (
     <Router>
       <header>
-      <img className="logo" src="/assets/logo2.png" alt="yumiLogo" onError={(e) => console.log("Error loading image:", e)}/>
+        <img className="logo" src="/assets/logo2.png" alt="yumiLogo" onError={(e) => console.log("Error loading image:", e)} />
         <div className="menu-toggle" id="mobile-menu">
           <span></span>
           <span></span>
@@ -33,23 +29,25 @@ function App() {
           </ul>
         </nav>
       </header>
-    
-
-   
-
 
       <Routes>
-        <Route path="/loginpage" element={<Login/>} />
-      <Route path="/signup" element={<Signup/>} />
-    <Route path="/user" element={<UserPage/>} />
-    <Route path="/admin" element={<AdminPage isAdmin={isAdmin} />} />
-      {/* Add other Routes as necessary */}
+        <Route path="/loginpage" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/user"
+          element={<UserPage isAdmin={isAdmin} />}
+          // You can also pass setIsAdmin function down if needed
+        />
+        <Route
+          path="/admin"
+          element={<AdminPage isAdmin={isAdmin} setIsAdmin={setIsAdmin} />}
+          // Pass setIsAdmin function to allow AdminPage to modify the state
+        />
+        {/* Add other Routes as necessary */}
       </Routes>
 
-      </Router>  
-    
+    </Router>
   );
-  
 }
 
 export default App;

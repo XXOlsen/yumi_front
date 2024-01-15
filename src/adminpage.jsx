@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './css/admin.css';
 
-function AdminPage() {
-  const [isAdmin, setIsAdmin] = useState(true); // Set the initial admin status
+function AdminPage({ isAdmin, setIsAdmin }) {
+  const handleLogin = () => {
+    // Your login logic here
+    // Assuming login is successful, update the isAdmin state
+    setIsAdmin(true);
+  };
 
   return (
     <div>
@@ -18,7 +22,9 @@ function AdminPage() {
               <label htmlFor="password">Password:</label>
               <input type="password" name="password" placeholder="Enter your password" />
 
-              <button type="submit">Login</button>
+              <button type="submit" onClick={handleLogin}>
+                Login
+              </button>
             </div>
           </div>
         </>
