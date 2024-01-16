@@ -15,7 +15,6 @@ import Question12 from './question12';
 import Question13 from './question13';
 // Import other question components as needed
 import './css/App.css';
-import facade from './util/apiFacade';
 import Login from './loginpage';
 import Signup from './signup';
 import UserPage from './userPage';
@@ -23,6 +22,16 @@ import AdminPage from './adminpage';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [questionsCollapsed, setQuestionsCollapsed] = useState(true);
+  const [applicationsCollapsed, setApplicationsCollapsed] = useState(true);
+
+  const toggleQuestions = () => {
+    setQuestionsCollapsed((prevCollapsed) => !prevCollapsed);
+  };
+
+  const toggleApplications = () => {
+    setApplicationsCollapsed((prevCollapsed) => !prevCollapsed);
+  };
 
   return (
     <Router>
@@ -34,21 +43,43 @@ function App() {
         </div>
         <nav className="nav">
           <ul>
-            {/* Add NavLink for each question */}
-            <li><NavLink to="/question1" activeClassName="active">Question 1</NavLink></li>
-            <li><NavLink to="/question2" activeClassName="active">Question 2</NavLink></li>
-            <li><NavLink to="/question3" activeClassName="active">Question 3</NavLink></li>
-            <li><NavLink to="/question4" activeClassName="active">Question 4</NavLink></li>
-            <li><NavLink to="/question5" activeClassName="active">Question 5</NavLink></li>
-            <li><NavLink to="/question6" activeClassName="active">Question 6</NavLink></li>
-            <li><NavLink to="/question7" activeClassName="active">Question 7</NavLink></li>
-            <li><NavLink to="/question8" activeClassName="active">Question 8</NavLink></li>
-            <li><NavLink to="/question9" activeClassName="active">Question 9</NavLink></li>
-            <li><NavLink to="/question10" activeClassName="active">Question 10</NavLink></li>
-            <li><NavLink to="/question11" activeClassName="active">Question 11</NavLink></li>
-            <li><NavLink to="/question12" activeClassName="active">Question 12</NavLink></li>
-            <li><NavLink to="/question13" activeClassName="active">Question 13</NavLink></li>
-            {/* Add NavLink for other questions */}
+            <li>
+              <div onClick={toggleQuestions}>
+                Questions
+                {questionsCollapsed ? ' +' : ' -'}
+              </div>
+              {!questionsCollapsed && (
+                <ul>
+                  <li><NavLink to="/question1" activeClassName="active">Question 1</NavLink></li>
+                  <li><NavLink to="/question2" activeClassName="active">Question 2</NavLink></li>
+                  <li><NavLink to="/question3" activeClassName="active">Question 3</NavLink></li>
+                  <li><NavLink to="/question4" activeClassName="active">Question 4</NavLink></li>
+                  <li><NavLink to="/question5" activeClassName="active">Question 5</NavLink></li>
+                  <li><NavLink to="/question6" activeClassName="active">Question 6</NavLink></li>
+                  <li><NavLink to="/question7" activeClassName="active">Question 7</NavLink></li>
+                  <li><NavLink to="/question8" activeClassName="active">Question 8</NavLink></li>
+                  <li><NavLink to="/question9" activeClassName="active">Question 9</NavLink></li>
+                  <li><NavLink to="/question10" activeClassName="active">Question 10</NavLink></li>
+                  <li><NavLink to="/question11" activeClassName="active">Question 11</NavLink></li>
+                  <li><NavLink to="/question12" activeClassName="active">Question 12</NavLink></li>
+                  <li><NavLink to="/question13" activeClassName="active">Question 13</NavLink></li>
+                </ul>
+              )}
+            </li>
+            <li>
+              <div onClick={toggleApplications}>
+                Yumi
+                {applicationsCollapsed ? ' +' : ' -'}
+              </div>
+              {!applicationsCollapsed && (
+                <ul>
+                  <li><NavLink to="/loginpage" activeClassName="active">Login</NavLink></li>
+                  <li><NavLink to="/signup" activeClassName="active">Signup</NavLink></li>
+                  <li><NavLink to="/user" activeClassName="active">User Page</NavLink></li>
+                  <li><NavLink to="/admin" activeClassName="active">Admin Page</NavLink></li>
+                </ul>
+              )}
+            </li>
           </ul>
         </nav>
       </header>

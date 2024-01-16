@@ -26,24 +26,6 @@ const element = <p>Hello, {name}!</p>;`}
           </pre>
         </li>
         <li>
-          {/* Attribute Names */}
-          JSX: Attribute names use camelCase conventions, such as className and tabIndex.
-          <br />
-          HTML: Attribute names typically use kebab-case, such as class and tabindex.
-          <br />
-          <br />
-          {/* Code Examples */}
-          <b>JSX:</b>
-          <pre>
-            {`const element = <div className="myClass" tabIndex={0}></div>;`}
-          </pre>
-          <b>HTML:</b>
-          <pre>
-            {`<!-- HTML attribute names use kebab-case -->
-<div class="myClass" tabindex="0"></div>`}
-          </pre>
-        </li>
-        <li>
           {/* Rendering Dynamic Content */}
           JSX: Supports embedding JavaScript expressions to render dynamic content within the markup.
           <br />
