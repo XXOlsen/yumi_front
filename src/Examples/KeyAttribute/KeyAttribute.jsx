@@ -18,6 +18,7 @@ const DynamicListExample = () => {
           {item.text}
           <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
         </li>
+        
       ))}
     </ul>
   );
