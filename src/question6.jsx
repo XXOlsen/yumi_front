@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 const Question6 = () => {
   const [data, setData] = useState('');
-  const [localStorageData, setLocalStorageData] = useState('');
-  const [sessionStorageData, setSessionStorageData] = useState('');
+  const [localStorageData, setLocalStorageData] = useState(localStorage.getItem('localData') || '');
+  const [sessionStorageData, setSessionStorageData] = useState(sessionStorage.getItem('sessionData') || '');
 
   const handleInputChange = (event) => {
     setData(event.target.value);
@@ -11,12 +11,12 @@ const Question6 = () => {
 
   const handleSaveLocal = () => {
     localStorage.setItem('localData', data);
-    setLocalStorageData(localStorage.getItem('localData'));
+    setLocalStorageData(data);
   };
 
   const handleSaveSession = () => {
     sessionStorage.setItem('sessionData', data);
-    setSessionStorageData(sessionStorage.getItem('sessionData'));
+    setSessionStorageData(data);
   };
 
   const handleClearStorage = () => {
@@ -29,10 +29,14 @@ const Question6 = () => {
   return (
     <div>
       <h2>Local Storage vs Session Storage</h2>
-      <label>
-        Enter Data:
-        <input type="text" value={data} onChange={handleInputChange} />
-      </label>
+      <label htmlFor="dataInput">Enter Data:</label>
+      <input
+        type="text"
+        id="dataInput"  // Add an id attribute
+        name="dataInput"  // Add a name attribute
+        value={data}
+        onChange={handleInputChange}
+      />
       <br />
       <button onClick={handleSaveLocal}>Save to Local Storage</button>
       <button onClick={handleSaveSession}>Save to Session Storage</button>
