@@ -1,38 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Question8() {
-  // Use state variables if needed
-  const [answer, setAnswer] = useState('');
-
-  // Handle changes to the input field
-  const handleInputChange = (event) => {
-    setAnswer(event.target.value);
-  };
-
-  // Handle submission of the answer
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add logic to handle the submitted answer, e.g., send to the server
-    console.log('Submitted answer:', answer);
+const EventExample = () => {
+  const handleEvent = (phase, event) => {
+    console.log(`Capturing phase: ${phase} - ${event.target.id}`);
   };
 
   return (
-    <div>
-      <h2>Question 8</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Your Answer:
-          <input
-            type="text"
-            value={answer}
-            onChange={handleInputChange}
-            required
-          />
-        </label>
-        <button type="submit">Submit Answer</button>
-      </form>
+    <div id="outer" onClick={(e) => handleEvent('bubbling', e)}>
+      <p id="middle" onClick={(e) => handleEvent('bubbling', e)}>
+        Click me to see event capturing and bubbling!
+        <button id="inner" onClick={(e) => handleEvent('bubbling', e)}>
+          Click me too!
+        </button>
+      </p>
+      <p id="middle2" onClick={(e) => handleEvent('bubbling', e)}>
+        Another paragraph
+      </p>
     </div>
   );
-}
+};
 
-export default Question8;
+export default EventExample;
