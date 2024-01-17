@@ -1,23 +1,30 @@
 import React from 'react';
 
-const EventExample = () => {
-  const handleEvent = (phase, event) => {
-    console.log(`Capturing phase: ${phase} - ${event.target.id}`);
+class EventBubblingExample extends React.Component {
+  handleClick = (element) => {
+    console.log(`Event bubbling phase: ${element}`);
   };
 
+  render() {
+    return (
+      <div id="outer" onClick={() => this.handleClick('outer')}>
+        <div id="middle" onClick={() => this.handleClick('middle')}>
+          <button id="inner" onClick={() => this.handleClick('inner')}>
+            Click me!
+          </button>
+        </div>
+      </div>
+    );
+  }
+}
+
+const Question8 = () => {
   return (
-    <div id="outer" onClick={(e) => handleEvent('bubbling', e)}>
-      <p id="middle" onClick={(e) => handleEvent('bubbling', e)}>
-        Click me to see event capturing and bubbling!
-        <button id="inner" onClick={(e) => handleEvent('bubbling', e)}>
-          Click me too!
-        </button>
-      </p>
-      <p id="middle2" onClick={(e) => handleEvent('bubbling', e)}>
-        Another paragraph
-      </p>
+    <div>
+      <h2>Question 8: Event Bubbling</h2>
+      <EventBubblingExample />
     </div>
   );
-};
+}
 
-export default EventExample;
+export default Question8;
