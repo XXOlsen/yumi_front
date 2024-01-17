@@ -1,23 +1,54 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const EventExample = () => {
-  const handleEvent = (phase, event) => {
-    console.log(`Capturing phase: ${phase} - ${event.target.id}`);
+class Question8 extends React.Component {
+  handleClick = (element, phase) => {
+    console.log(`${phase} on ${element} element`);
   };
 
-  return (
-    <div id="outer" onClick={(e) => handleEvent('bubbling', e)}>
-      <p id="middle" onClick={(e) => handleEvent('bubbling', e)}>
-        Click me to see event capturing and bubbling!
-        <button id="inner" onClick={(e) => handleEvent('bubbling', e)}>
-          Click me too!
-        </button>
-      </p>
-      <p id="middle2" onClick={(e) => handleEvent('bubbling', e)}>
-        Another paragraph
-      </p>
-    </div>
-  );
-};
+  handleCaptureOuter = () => {
+    // Capture the click on the outer button
+    console.log('Captured Outer during capture');
 
-export default EventExample;
+    // Log the bubbling phase for the inner element
+    this.handleClick('inner', 'Bubbling');
+
+    // Log the bubbling phase for the middle element
+    this.handleClick('middle', 'Bubbling');
+  };
+
+  handleBubblingButton = () => {
+    // Log the bubbling phase for the inner element
+    this.handleClick('inner', 'Bubbling');
+
+    // Log the bubbling phase for the middle element
+    this.handleClick('middle', 'Bubbling');
+
+    // Log the bubbling phase for the outer element
+    this.handleClick('outer', 'Bubbling');
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Question 8</h1>
+        <div id="outer">
+          <div id="middle">
+            <div id="inner">
+              {/* Button capturing the outer element and bubbling through the inner and middle */}
+              <button onClick={this.handleCaptureOuter}>
+                Capture Outer and Bubble
+              </button>
+
+              {/* Button only bubbling through the outer, middle, and inner elements */}
+              <button onClick={this.handleBubblingButton}>
+                Bubbling Button
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Question8;
