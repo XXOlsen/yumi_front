@@ -1,38 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Question3() {
-  // Use state variables if needed
-  const [answer, setAnswer] = useState('');
-
-  // Handle changes to the input field
-  const handleInputChange = (event) => {
-    setAnswer(event.target.value);
-  };
-
-  // Handle submission of the answer
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add logic to handle the submitted answer, e.g., send to the server
-    console.log('Submitted answer:', answer);
-  };
-
-  return (
-    <div>
-      <h2>Question 3</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Your Answer:
-          <input
-            type="text"
-            value={answer}
-            onChange={handleInputChange}
-            required
-          />
-        </label>
-        <button type="submit">Submit Answer</button>
-      </form>
+const Card = ({ title, content, imageUrl }) => (
+  <div className="card">
+    <img src={imageUrl} alt="Card" style={{ width: '100%' }} />
+    <div className="card-body">
+      <h2 className="card-title">{title}</h2>
+      <p className="card-content">{content}</p>
     </div>
-  );
-}
+  </div>
+);
+
+const Question3 = () => (
+  <div>
+    <Card
+      title="Example Card 1"
+      content="This is some content for the first card."
+      imageUrl="https://via.placeholder.com/300"
+    />
+
+    <Card
+      title="Example Card 2"
+      content="This is some content for the second card."
+      imageUrl="https://via.placeholder.com/300"
+    />
+  </div>
+);
 
 export default Question3;
