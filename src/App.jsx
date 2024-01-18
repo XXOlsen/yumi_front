@@ -95,7 +95,7 @@ function App() {
           path="/admin"
           element={<AdminPage isAdmin={isAdmin} setIsAdmin={setIsAdmin} />}
         />
-        {/* Add Route for each question component */}
+ 
         <Route path="/question1" element={<Question1 />} />
         <Route path="/question2" element={<Question2 />} />
         <Route path="/question3" element={<Question3 />} />
@@ -109,7 +109,7 @@ function App() {
         <Route path="/question11" element={<Question11 />} />
         <Route path="/question12" element={<Question12 />} />
         <Route path="/question13" element={<Question13/>} />
-        {/* Add Route for other question components */}
+    
       </Routes>
 
     </Router>

@@ -4,8 +4,6 @@ import './css/userpage.css';
 import facade from './util/apiFacade';
 
 function UserPage({ isAdmin, setIsAdmin }) {
-  const init = { username: '', password: '' };
-  const [loginCredentials, setLoginCredentials] = useState(init);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [dataFromServer, setDataFromServer] = useState('Loading...');
 
@@ -13,18 +11,7 @@ function UserPage({ isAdmin, setIsAdmin }) {
     facade.fetchData('diary', 'GET').then((data) => setDataFromServer(data));
   }, [isLoggedIn]);
 
-  const performLogin = (evt) => {
-    evt.preventDefault();
-    facade.login(loginCredentials.username, loginCredentials.password, setIsLoggedIn);
-  };
-
-  const onChange = (evt) => {
-    setLoginCredentials({
-      ...loginCredentials,
-      [evt.target.id]: evt.target.value,
-    });
-  };
-
+ 
   return (
     <div className="userflex">
       <div className="flex-item1">
