@@ -1,38 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
-function Question9() {
-  // Use state variables if needed
-  const [answer, setAnswer] = useState('');
+function CombinedComponent() {
+  // Controlled component state
+  const [controlledValue, setControlledValue] = useState('');
 
-  // Handle changes to the input field
-  const handleInputChange = (event) => {
-    setAnswer(event.target.value);
+  // Uncontrolled component ref
+  const uncontrolledInputRef = useRef();
+
+  // Event handler for controlled component
+  const handleControlledChange = (event) => {
+    setControlledValue(event.target.value);
   };
 
-  // Handle submission of the answer
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add logic to handle the submitted answer, e.g., send to the server
-    console.log('Submitted answer:', answer);
+  // Event handler for uncontrolled component
+  const handleUncontrolledClick = () => {
+    const uncontrolledValue = uncontrolledInputRef.current.value;
+    alert(`Uncontrolled Input Value: ${uncontrolledValue}`);
   };
 
   return (
     <div>
-      <h2>Question 9</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Your Answer:
-          <input
-            type="text"
-            value={answer}
-            onChange={handleInputChange}
-            required
-          />
-        </label>
-        <button type="submit">Submit Answer</button>
-      </form>
+      <h2>Controlled Component</h2>
+      <label>
+        Controlled Input:
+        <input type="text" value={controlledValue} onChange={handleControlledChange} />
+      </label>
+      <p>Controlled Input Value: {controlledValue}</p>
+
+      <hr />
+
+      <h2>Uncontrolled Component</h2>
+      <label>
+        Uncontrolled Input:
+        <input type="text" ref={uncontrolledInputRef} />
+      </label>
+      <button onClick={handleUncontrolledClick}>Get Value</button>
     </div>
   );
 }
 
-export default Question9;
+export default CombinedComponent;
