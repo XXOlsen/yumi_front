@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './css/App.css';
 
 
 // Main Question2 component
@@ -11,7 +12,9 @@ function Question2() {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+  
+  
+    <div className="flexbox">
       {/* Main content */}
       <div>
         {/* Main Content Header */}

@@ -41,6 +41,13 @@
   color: #888;
 }
 .active {
-  color: red; /* or any other styling you want for active NavLink */
+  color: red; 
 }
 
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
