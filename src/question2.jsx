@@ -21,10 +21,6 @@ function Question2() {
         {/* Render a child component and pass the callback as a prop */}
         <ChildComponent callback={handleCallback} />
       </div>
-
-      {/* Information box */}
-      {/* Render the InformationBox component */}
-      <InformationBox />
     </div>
   );
 }
