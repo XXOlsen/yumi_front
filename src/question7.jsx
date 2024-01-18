@@ -1,38 +1,36 @@
 import React, { useState } from 'react';
 
-function Question7() {
-  // Use state variables if needed
-  const [answer, setAnswer] = useState('');
+const Question7 = () => {
+  // State to track the input value
+  const [inputValue, setInputValue] = useState('');
 
-  // Handle changes to the input field
+  // Event handler for the input change event
   const handleInputChange = (event) => {
-    setAnswer(event.target.value);
+    setInputValue(event.target.value);
   };
 
-  // Handle submission of the answer
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add logic to handle the submitted answer, e.g., send to the server
-    console.log('Submitted answer:', answer);
+  // Event handler for the button click event
+  const handleButtonClick = () => {
+    alert(`Button clicked! Input value: ${inputValue}`);
   };
 
   return (
     <div>
-      <h2>Question 7</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Your Answer:
-          <input
-            type="text"
-            value={answer}
-            onChange={handleInputChange}
-            required
-          />
-        </label>
-        <button type="submit">Submit Answer</button>
-      </form>
+      <h2>Event Handling in React</h2>
+
+      {/* Input field with onChange event */}
+      <label>
+        Type something:
+        <input type="text" value={inputValue} onChange={handleInputChange} />
+      </label>
+
+      <br />
+
+      {/* Button with onClick event */}
+      <button onClick={handleButtonClick}>Click me</button>
     </div>
   );
-}
+};
+
 
 export default Question7;
