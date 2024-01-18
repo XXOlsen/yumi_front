@@ -1,38 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Question3() {
-  // Use state variables if needed
-  const [answer, setAnswer] = useState('');
-
-  // Handle changes to the input field
-  const handleInputChange = (event) => {
-    setAnswer(event.target.value);
-  };
-
-  // Handle submission of the answer
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add logic to handle the submitted answer, e.g., send to the server
-    console.log('Submitted answer:', answer);
-  };
-
-  return (
-    <div>
-      <h2>Question 3</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Your Answer:
-          <input
-            type="text"
-            value={answer}
-            onChange={handleInputChange}
-            required
-          />
-        </label>
-        <button type="submit">Submit Answer</button>
-      </form>
-    </div>
-  );
-}
+const Question3 = () => (
+  <div>
+    <h2>Question 3</h2>
+  </div>
+);
 
 export default Question3;

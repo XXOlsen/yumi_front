@@ -1,26 +1,31 @@
 import React from 'react';
 
-const ListComponent = () => {
-  const items = ['Item 1', 'Item 2', 'Item 3'];
+class ListRenderingExample extends React.Component {
+  render() {
+    // Before using .map
+    const itemsBeforeMap = ['Item 1', 'Item 2', 'Item 3'];
 
-  const renderedItems = items.map((item, index) => {
-    return <li key={index}>{item}</li>;
-  });
+    // After using .map
+    const itemsAfterMap = ['Item 1', 'Item 2', 'Item 3'];
 
-  return (
-    <ul>
-      {renderedItems}
-    </ul>
-  );
-};
+    return (
+      <div>
+        <h2>Before Using .map</h2>
+        <ul>
+          <li>{itemsBeforeMap[0]}</li>
+          <li>{itemsBeforeMap[1]}</li>
+          <li>{itemsBeforeMap[2]}</li>
+        </ul>
 
-const App = () => {
-  return (
-    <div>
-      <h2>List Example</h2>
-      <ListComponent />
-    </div>
-  );
-};
+        <h2>After Using .map</h2>
+        <ul>
+          {itemsAfterMap.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
 
-export default App;
+export default ListRenderingExample;
