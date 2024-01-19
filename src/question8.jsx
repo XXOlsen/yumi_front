@@ -1,78 +1,51 @@
 import React, { useState } from 'react';
 
-const DynamicList = () => {
-  const initialItems = [
-    { id: 1, text: 'Item 1' },
-    { id: 2, text: 'Item 2' },
-    { id: 3, text: 'Item 3' },
-    { id: 4, text: 'Item 4' },
-  ];
+class Question8 extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const [items, setItems] = useState(initialItems);
-  const [newItemText, setNewItemText] = useState('');
-  const [newItemId, setNewItemId] = useState('');
+    this.state = {
+      items: [
+        { id: 1, text: 'Item 1' },
+        { id: 2, text: 'Item 2' },
+        { id: 3, text: 'Item 3' },
+        { id: 4, text: 'Item 4' },
+      ],
+      newItemText: '',
+      newItemId: '',
+    };
+  }
 
-  const addItem = () => {
+  addItem = () => {
+    const { newItemText, newItemId, items } = this.state;
+
     if (newItemText && newItemId) {
       const newItem = { id: Number(newItemId), text: newItemText };
-      setItems([...items, newItem]);
-      setNewItemText('');
-      setNewItemId('');
+      this.setState({
+        items: [...items, newItem],
+        newItemText: '',
+        newItemId: '',
+      });
     }
   };
 
-  const deleteItem = (id) => {
-    setItems(items.filter((item) => item.id !== id));
+  deleteItem = (id) => {
+    this.setState((prevState) => ({
+      items: prevState.items.filter((item) => item.id !== id),
+    }));
   };
 
-  const repositionItem = (id, newPosition) => {
-    const updatedItems = items.filter((item) => item.id !== id);
-    const index = newPosition - 1; // Adjust to 0-based index
-    updatedItems.splice(index, 0, items.find((item) => item.id === id));
-    setItems(updatedItems);
+  repositionItem = (id, newPosition) => {
+    this.setState((prevState) => {
+      const { items } = prevState;
+      const updatedItems = items.filter((item) => item.id !== id);
+      const index = newPosition - 1; // Adjust to 0-based index
+      updatedItems.splice(index, 0, items.find((item) => item.id === id));
+
+      return { items: updatedItems };
+    });
   };
 
-  return (
-    <div>
-      <h2>Dynamic List with Order Control</h2>
-
-      <ul>
-        {items.map((item) => (
-          <li key={item.id}>
-            {item.text}{' '}
-            <button onClick={() => deleteItem(item.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-
-      <div>
-        <label>
-          New Item Text:
-          <input
-            type="text"
-            value={newItemText}
-            onChange={(e) => setNewItemText(e.target.value)}
-          />
-        </label>
-        <label>
-          New Item ID:
-          <input
-            type="number"
-            value={newItemId}
-            onChange={(e) => setNewItemId(e.target.value)}
-          />
-        </label>
-        <button onClick={addItem}>Add Item</button>
-      </div>
-
-      <button onClick={() => repositionItem(Number(newItemId), 5)}>
-        Move Item to 5th Place
-      </button>
-    </div>
-  );
-};
-
-class Question8 extends React.Component {
   handleClick = (element, phase) => {
     console.log(`${phase} on ${element} element`);
   };
@@ -100,6 +73,8 @@ class Question8 extends React.Component {
   };
 
   render() {
+    const { items, newItemText, newItemId } = this.state;
+
     return (
       <div>
         <h1>Question 8</h1>
@@ -118,9 +93,44 @@ class Question8 extends React.Component {
             </div>
           </div>
         </div>
+
+        <h2>Dynamic List with Order Control</h2>
+
+        <ul>
+          {items.map((item) => (
+            <li key={item.id}>
+              {item.text}{' '}
+              <button onClick={() => this.deleteItem(item.id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+
+        <div>
+          <label>
+            New Item Text:
+            <input
+              type="text"
+              value={newItemText}
+              onChange={(e) =>
+                this.setState({ newItemText: e.target.value })
+              }
+            />
+          </label>
+          <label>
+            New Item ID:
+            <input
+              type="number"
+              value={newItemId}
+              onChange={(e) =>
+                this.setState({ newItemId: e.target.value })
+              }
+            />
+          </label>
+          <button onClick={this.addItem}>Add Item</button>
+        </div>
       </div>
     );
   }
 }
 
-export { Question8, DynamicList };
+export default Question8;
