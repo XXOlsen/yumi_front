@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 class Question8 extends React.Component {
   constructor(props) {
