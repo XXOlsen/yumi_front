@@ -1,38 +1,64 @@
+// Question10.jsx
 import React, { useState } from 'react';
 
-function Question10() {
-  // Use state variables if needed
-  const [answer, setAnswer] = useState('');
+const Question10 = () => {
+  const [popupContent, setPopupContent] = useState('');
 
-  // Handle changes to the input field
-  const handleInputChange = (event) => {
-    setAnswer(event.target.value);
+  // Spread Operator Example
+  const handleSpreadClick = () => {
+    const originalArray = [1, 2, 3, 4, 5];
+    const otherArray = [6,7,8,9,10];
+    const newArray = [...originalArray, ...otherArray];
+  
+    setPopupContent(
+      <div>
+        <p>Spread Operator Example:</p>
+        <p>Original Array: [{originalArray.join(', ')}]</p>
+        <p>Other Array: [{otherArray.join(', ')}]</p>
+        <p>New Array: [...originalArray, ...otherArray] = [{newArray.join(', ')}]</p>
+      </div>
+    );
   };
 
-  // Handle submission of the answer
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add logic to handle the submitted answer, e.g., send to the server
-    console.log('Submitted answer:', answer);
+  // Rest Operator Example
+  const handleRestClick = () => {
+    const sumValues = (...numbers) => {
+      return numbers.reduce((acc, num) => acc + num, 0);
+    };
+
+    const result = sumValues(1, 2, 3, 4, 5);
+
+    setPopupContent(
+      <div>
+        <p>Rest Operator Example:</p>
+        <p>Sum of Values: {result}</p>
+      </div>
+    );
+  };
+
+  const handleClosePopup = () => {
+    setPopupContent('');
   };
 
   return (
     <div>
-      <h2>Question 10</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Your Answer:
-          <input
-            type="text"
-            value={answer}
-            onChange={handleInputChange}
-            required
-          />
-        </label>
-        <button type="submit">Submit Answer</button>
-      </form>
+      <h2>Spread and Rest Operator Example</h2>
+
+      <button onClick={handleSpreadClick}>Step 1: Spread Operator</button>
+      <button onClick={handleRestClick}>Step 2: Rest Operator</button>
+
+      {popupContent && (
+        <div className="popup">
+          <div className="popup-content">
+            <span className="close" onClick={handleClosePopup}>
+              &times;
+            </span>
+            {popupContent}
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default Question10;
