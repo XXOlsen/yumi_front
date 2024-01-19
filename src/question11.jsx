@@ -1,38 +1,37 @@
 import React, { useState } from 'react';
 
-function Question11() {
-  // Use state variables if needed
-  const [answer, setAnswer] = useState('');
+const Question11 = () => {
+  const [result, setResult] = useState('');
 
-  // Handle changes to the input field
-  const handleInputChange = (event) => {
-    setAnswer(event.target.value);
+  // Synchronous function
+  const syncFunction = () => {
+    const value = 'Synchronous Function Result';
+    setResult(value);
   };
 
-  // Handle submission of the answer
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add logic to handle the submitted answer, e.g., send to the server
-    console.log('Submitted answer:', answer);
+  // Asynchronous function using async/await
+  const asyncFunction = async () => {
+    try {
+      // Simulate fetching data from an API
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+      const data = await response.json();
+
+      setResult(`Async Function Result: ${data.title}`);
+    } catch (error) {
+      setResult('Error occurred while fetching data');
+    }
   };
 
   return (
     <div>
       <h2>Question 11</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Your Answer:
-          <input
-            type="text"
-            value={answer}
-            onChange={handleInputChange}
-            required
-          />
-        </label>
-        <button type="submit">Submit Answer</button>
-      </form>
+
+      <button onClick={syncFunction}>Run Synchronous Function</button>
+      <button onClick={asyncFunction}>Run Asynchronous Function</button>
+
+      <p>Result: {result}</p>
     </div>
   );
-}
+};
 
 export default Question11;

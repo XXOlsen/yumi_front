@@ -22,15 +22,22 @@ const Question10 = () => {
 
   // Rest Operator Example
   const handleRestClick = () => {
-    const sumValues = (...numbers) => {
+    const sumValues = (first, ...numbers) => {
       return numbers.reduce((acc, num) => acc + num, 0);
     };
 
-    const result = sumValues(1, 2, 3, 4, 5);
+    const result = sumValues(1,2,3,4,5);
+   
+    
+ 
 
     setPopupContent(
       <div>
         <p>Rest Operator Example:</p>
+        <p>Function: sumValues(first, ...numbers)</p>
+        <p>Arguments: (1,2,3,4,5)</p>
+        <p>Rest Operator: first ...numbers</p>
+        <p>Rest Operator Result: [{[2,3,4,5].join(', ')}]</p>
         <p>Sum of Values: {result}</p>
       </div>
     );
