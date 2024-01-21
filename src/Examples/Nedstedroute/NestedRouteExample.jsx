@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, NavLink, Outlet } from 'react-router-dom';
 
 // Components for nested routes
 const UserProfile = () => <div>User Profile</div>;
@@ -11,8 +11,8 @@ const UserDashboard = () => (
     <h2>User Dashboard</h2>
     <nav>
       <ul>
-        <li><Link to="profile">Profile</Link></li>
-        <li><Link to="settings">Settings</Link></li>
+        <li><NavLink to="profile" activeClassName="active-link">Profile</NavLink></li>
+        <li><NavLink to="settings" activeClassName="active-link">Settings</NavLink></li>
       </ul>
     </nav>
     <hr />
