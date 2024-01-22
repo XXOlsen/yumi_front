@@ -7,10 +7,8 @@ function Question1() {
   useEffect(() => {
     // Higher-Order Function (HOF)
     const multiplyBy = (multiplier) => {
-      // The returned function is the closure
-      return (number) => {
-        return number * multiplier;
-      };
+      // Return a function that multiplies the provided 'number' by the 'multiplier'
+      return (number) => number * multiplier;
     };
 
     // Using the Higher-Order Function to create a new function
