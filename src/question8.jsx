@@ -35,17 +35,6 @@ class Question8 extends React.Component {
     }));
   };
 
-  repositionItem = (id, newPosition) => {
-    this.setState((prevState) => {
-      const { items } = prevState;
-      const updatedItems = items.filter((item) => item.id !== id);
-      const index = newPosition - 1; // Adjust to 0-based index
-      updatedItems.splice(index, 0, items.find((item) => item.id === id));
-
-      return { items: updatedItems };
-    });
-  };
-
   handleClick = (element, phase) => {
     console.log(`${phase} on ${element} element`);
   };

@@ -23,3 +23,13 @@ window.addEventListener('resize', () => {
 window.setTimeout(() => {
   console.log('Timeout completed!');
 }, 2000);
+
+// Using document.getElementById to manipulate the DOM
+const myElement = document.getElementById('exampleElement');
+
+// Check if the element exists
+if (myElement) {
+  // Modify the element's properties or content
+  myElement.textContent = 'Hello from document.getElementById!';
+  myElement.style.color = 'blue';
+}
