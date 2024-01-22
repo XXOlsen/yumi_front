@@ -1,53 +1,33 @@
-import React, { useState } from 'react';
+// Question4.jsx
+
+import React from 'react';
 
 function Question4() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  function fetchActivityThenSyntax() {
+    fetch('https://www.boredapi.com/api/activity/')
+      .then(response => response.json())
+      .then(data => console.log("Fetch (then syntax):", data))
+      .catch(error => console.error(error))
+      .finally(() => console.log("Finally promise fulfilled (then syntax)"));
+  }
 
-  const fetchData = () => {
-    setLoading(true);
-
-    // Simulating an asynchronous operation with a promise
-    return new Promise((resolve, reject) => {
-      // Simulate fetching data after 2 seconds
-      setTimeout(() => {
-        const randomNumber = Math.floor(Math.random() * 10);
-
-        // Simulate success or failure based on the random number
-        if (randomNumber % 2 == 0) {
-          resolve(`Data successfully fetched: ${randomNumber}`);
-        } else {
-          reject('Error fetching data. Please try again.');
-        }
-
-        setLoading(false);
-      }, 2000);
-    });
-  };
-
-  const handleFetchData = () => {
-    // Call the fetchData function when the button is clicked
-    fetchData()
-      .then((result) => {
-        // Set the data in state on successful promise resolution
-        setData(result);
-      })
-      .catch((error) => {
-        // Set the error in state on promise rejection
-        setError(error);
-      });
-  };
+  async function fetchActivityAsyncAwait() {
+    try {
+      let response = await fetch('https://www.boredapi.com/api/activity/');
+      let data = await response.json();
+      console.log("Fetch (async/await):", data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      console.log("Finally async promise fulfilled (async/await)");
+    }
+  }
 
   return (
     <div>
-      <h2>Promise Example</h2>
-      <button onClick={handleFetchData} disabled={loading}>
-        {loading ? 'Fetching Data...' : 'Fetch Data'}
-      </button>
-      <br />
-      {data && <p>{data}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <h2>Question 4</h2>
+      <button onClick={fetchActivityThenSyntax}>Fetch Activity (Then Syntax)</button>
+      <button onClick={fetchActivityAsyncAwait}>Fetch Activity (Async/Await)</button>
     </div>
   );
 }
