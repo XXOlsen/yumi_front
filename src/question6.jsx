@@ -9,6 +9,8 @@ const Question6 = () => {
     setData(event.target.value);
   };
 
+  /* web storage api tillader setitem, removeitem, getitem
+  feature givet af wbe browseren selv.*/
   const handleSaveLocal = () => {
     localStorage.setItem('localData', data);
     setLocalStorageData(data);

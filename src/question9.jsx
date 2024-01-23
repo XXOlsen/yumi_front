@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react';
 
 function CombinedComponent() {
-  // Controlled component state
+  // Controlled component usestate
   const [controlledValue, setControlledValue] = useState('');
 
-  // Uncontrolled component ref
+  // Uncontrolled component useref (trigger ikke re-render)
   const uncontrolledInputRef = useRef();
 
   // Event handler for controlled component

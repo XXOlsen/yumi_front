@@ -1,37 +1,35 @@
-import React, { useState } from 'react';
+// Question4.jsx
 
-const Question11 = () => {
-  const [result, setResult] = useState('');
+import React from 'react';
 
-  // Synchronous function
-  const syncFunction = () => {
-    const value = 'Synchronous Function Result';
-    setResult(value);
-  };
+function Question11() {
+  function fetchActivityThenSyntax() {
+    fetch('https://www.boredapi.com/api/activity/')
+      .then(response => response.json())
+      .then(data => console.log("Fetch (then syntax):", data))
+      .catch(error => console.error(error))
+      .finally(() => console.log("Finally promise fulfilled (then syntax)"));
+  }
 
-  // Asynchronous function using async/await
-  const asyncFunction = async () => {
+  async function fetchActivityAsyncAwait() {
     try {
-      // Simulate fetching data from an API
-      const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-      const data = await response.json();
-
-      setResult(`Async Function Result: ${data.title}`);
+      let response = await fetch('https://www.boredapi.com/api/activity/');
+      let data = await response.json();
+      console.log("Fetch (async/await):", data);
     } catch (error) {
-      setResult('Error occurred while fetching data');
+      console.error(error);
+    } finally {
+      console.log("Finally async promise fulfilled (async/await)");
     }
-  };
+  }
 
   return (
     <div>
       <h2>Question 11</h2>
-
-      <button onClick={syncFunction}>Run Synchronous Function</button>
-      <button onClick={asyncFunction}>Run Asynchronous Function</button>
-
-      <p>Result: {result}</p>
+      <button onClick={fetchActivityThenSyntax}>Fetch Activity (Then Syntax)</button>
+      <button onClick={fetchActivityAsyncAwait}>Fetch Activity (Async/Await)</button>
     </div>
   );
-};
+}
 
 export default Question11;

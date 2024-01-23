@@ -19,10 +19,6 @@ window.addEventListener('resize', () => {
   console.log('Window resized!');
 });
 
-// Setting a timeout
-window.setTimeout(() => {
-  console.log('Timeout completed!');
-}, 2000);
 
 // Using document.getElementById to manipulate the DOM
 const myElement = document.getElementById('exampleElement');

@@ -14,45 +14,37 @@ function Question12() {
     setShowContent(!showContent);
   };
 
-  // Question12 function
-  const fetchData = () => {
-    setLoading(true);
+  function fetchActivityThenSyntax() {
+    fetch('https://www.boredapi.com/api/activity/')
+      .then(response => response.json())
+      .then(data => console.log("Fetch (then syntax):", data))
+      .catch(error => console.error(error))
+      .finally(() => console.log("Finally promise fulfilled (then syntax)"));
+  }
 
-    // Simulating an asynchronous operation with a promise
-    return new Promise((resolve, reject) => {
-      // Simulate fetching data after 2 seconds
-      setTimeout(() => {
-        const randomNumber = Math.floor(Math.random() * 10);
+  async function fetchActivityAsyncAwait() {
+    try {
+      let response = await fetch('https://www.boredapi.com/api/activity/');
+      let data = await response.json();
+      console.log("Fetch (async/await):", data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      console.log("Finally async promise fulfilled (async/await)");
+    }
+  }
 
-        // Simulate success or failure based on the random number
-        if (randomNumber % 2 === 0) {
-          resolve(`Data successfully fetched: ${randomNumber}`);
-        } else {
-          reject('Error fetching data. Please try again.');
-        }
-
-        setLoading(false);
-      }, 2000);
-    });
-  };
-
-  const handleFetchData = () => {
-    // Call the fetchData function when the button is clicked
-    fetchData()
-      .then((result) => {
-        // Set the data in state on successful promise resolution
-        setData(result);
-      })
-      .catch((error) => {
-        // Set the error in state on promise rejection
-        setError(error);
-      });
-  };
+  
 
   return (
     <div className="container">
-      <h2>Question 12</h2>
+       <div>
+      <h2>async functions</h2>
+      <button onClick={fetchActivityThenSyntax}>Fetch Activity (Then Syntax)</button>
+      <button onClick={fetchActivityAsyncAwait}>Fetch Activity (Async/Await)</button>
+    </div>
 
+      <h2>Question 12</h2>
       {/* Question5 content */}
       <button onClick={toggleContent}>Toggle Content</button>
       {showContent ? (
@@ -63,15 +55,8 @@ function Question12() {
       ) : (
         <p>Click the button to show the content.</p>
       )}
-
-      {/* Question12 content */}
-      <button onClick={handleFetchData} disabled={loading}>
-        {loading ? 'Fetching Data...' : 'Fetch Data'}
-      </button>
-      <br />
-      {data && <p>{data}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-    </div>
+      </div>
+      
   );
 }
 

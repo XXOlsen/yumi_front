@@ -15,7 +15,6 @@ function Question5() {
       {showContent ? (
         <div>
           <p>This content is displayed when showContent is true.</p>
-          {/* Add more content as needed */}
         </div>
       ) : (
         <p>Click the button to show the content.</p>
