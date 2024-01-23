@@ -1,18 +1,24 @@
-// Example of using state in a functional component
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function Question3() {
+function ExampleComponent() {
+  // State variable for counting
   const [count, setCount] = useState(0);
+  
+  // useEffect to run whenever 'count' changes
+  useEffect(() => {
+    console.log('Count changed:', count);
+  }, [count]); // Dependency array with 'count' means it runs when 'count' changes
 
-  const increment = () => {
-    setCount(count + 1);
+  const incrementCount = () => {
+    setCount((prevCount) => prevCount + 1);
   };
 
   return (
     <div>
       <p>Count: {count}</p>
-      <button onClick={increment}>Increment</button>
+      <button onClick={incrementCount}>Increment Count</button>
     </div>
   );
 }
-export default Question3;
+
+export default ExampleComponent;
