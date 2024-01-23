@@ -73,6 +73,7 @@ function App() {
               </div>
               {!applicationsCollapsed && (
                 <ul>
+                   <li><NavLink to="/" activeClassName="active">Home</NavLink></li>
                   <li><NavLink to="/loginpage" activeClassName="active">Login</NavLink></li>
                   <li><NavLink to="/signup" activeClassName="active">Signup</NavLink></li>
                   <li><NavLink to="/user" activeClassName="active">User Page</NavLink></li>
