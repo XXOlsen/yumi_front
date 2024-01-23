@@ -15,9 +15,7 @@ function Question2() {
   
   
     <div className="flexbox">
-      {/* Main content */}
       <div>
-        {/* Main Content Header */}
         <h2>Render Callback Example</h2>
         {/* Displaying Message from Child */}
         <p>{message}</p>
@@ -27,6 +25,7 @@ function Question2() {
     </div>
   );
 }
+
 
 // Child component that uses the callback(handleCallback)
 function ChildComponent({ callback }) {
@@ -39,18 +38,16 @@ function ChildComponent({ callback }) {
 
   const handleInputChange = (event) => {
     setCustomMessage(event.target.value);
+    console.log(event.target.value);
   };
 
   return (
     <div>
-      {/* Child Component Header */}
       <p>Child Component</p>
-      {/* Input Field for Custom Message */}
       <label>
         Enter Custom Message:
         <input type="text" value={customMessage} onChange={handleInputChange} />
       </label>
-      {/* Button to Send Data to Parent */}
       {/* senddatatoparent invokes the callback function which invokes the handlecallback in parent */}
       <button onClick={sendDataToParent}>Send Data to Parent</button>
     </div>

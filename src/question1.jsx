@@ -1,39 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function Question1() {
-  const [multiplier, setMultiplier] = useState(2);
-  const [resultMultiply, setResultMultiply] = useState(null);
+  const [factor, setFactor] = useState('2');
+  const [number, setNumber] = useState('0');
 
-  useEffect(() => {
-    // Higher-Order Function (HOF)
-    const multiplyBy = (multiplier) => {
-      // Return a function that multiplies the provided 'number' by the 'multiplier'
-      return (number) => number * multiplier;
-    };
+  function handleFactorChange(e) {
+    setFactor(e.target.value);
+  }
 
-    // Using the Higher-Order Function to create a new function
-    const multiplyByMultiplier = multiplyBy(multiplier);
+  function handleNumberChange(e) {
+    setNumber(e.target.value);
+  }
 
-    // Using the returned function and updating state
-    setResultMultiply(multiplyByMultiplier(5));
-  }, [multiplier]); // Re-run the effect whenever the multiplier changes
+  function multiply(num) {
+    return num * (factor);
+  }
 
-  const handleMultiplierChange = (event) => {
-    setMultiplier(Number(event.target.value));
-  };
+  function sum(callback) {
+
+   return callback(number);
+ 
+  } 
 
   return (
     <div>
-      <h2>Question 1</h2>
       <label>
-        Multiplier:
-        <input
-          type="number"
-          value={multiplier}
-          onChange={handleMultiplierChange}
-        />
+        Factor:
+        <input type="number" value={factor} onChange={handleFactorChange} />
       </label>
-      <p>Result of multiplyByMultiplier(5): {resultMultiply}</p>
+      <br />
+      <label>
+        Number:
+        <input type="number" value={number} onChange={handleNumberChange} />
+      </label>
+      <br />
+      <p>
+        Result: {sum(multiply)}
+      </p>
     </div>
   );
 }

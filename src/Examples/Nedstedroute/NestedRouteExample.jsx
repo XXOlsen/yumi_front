@@ -20,6 +20,7 @@ const UserDashboard = () => (
   </div>
 );
 
+
 // Main component with routes
 const App = () => (
   <Router>
